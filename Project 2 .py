@@ -1,0 +1,48 @@
+import pandas as pd
+
+df = pd.read_excel(
+    r"C:\Users\HP\Desktop\Decode Lab Projects\Week -2 Project\Dataset for Data Analytics.xlsx"
+)
+
+print(df.head())
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+df = pd.read_excel("Dataset for Data Analytics.xlsx")
+print(df.head())
+print(df.info())
+print("Rows & Columns:", df.shape)
+print(df.isnull().sum())
+print("Duplicate Records:", df.duplicated().sum())
+print(df.describe())
+print(df.median(numeric_only=True))
+print(df.count())
+print(df['Product'].value_counts())
+df['Product'].value_counts().plot(kind='bar')
+plt.title("Product Distribution")
+plt.show()
+print(df['OrderStatus'].value_counts())
+df['OrderStatus'].value_counts().plot(kind='bar')
+plt.title("Order Status Analysis")
+plt.show()
+df['TotalPrice'].hist(bins=20)
+plt.title("Total Price Distribution")
+plt.show()
+plt.boxplot(df['TotalPrice'])
+plt.title("Outlier Detection - Total Price")
+plt.show()
+corr = df[['Quantity','UnitPrice','ItemsInCart','TotalPrice']].corr()
+print(corr)
+sns.heatmap(corr, annot=True)
+plt.show()
+print("\nFINAL CONCLUSION")
+print("1. Dataset contains 1200 records and 14 columns.")
+print("2. Missing values are present in some attributes.")
+print("3. No duplicate records were found.")
+print("4. Average quantity ordered is approximately 3 units.")
+print("5. Average order value is approximately 1054.")
+print("6. Printer, Tablet and Chair are the most purchased products.")
+print("7. Cancelled and Returned orders are relatively high.")
+print("8. TotalPrice is strongly related to UnitPrice and Quantity.")
+print("9. Outliers exist in pricing-related columns.")
+print("10. Dataset provides useful business insights.")
